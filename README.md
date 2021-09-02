@@ -1,6 +1,6 @@
 ## Краткое руководство по проекту.
 
-* Данная инструкция выполнится на Mac Os и Linux.
+<!-- * Данная инструкция выполнится на Mac Os и Linux.
 Pipex это проект , который воспроизводит поведение оболочки трубы |команды в C, используя функции pipe(), fork(), dup2()и execve().
 * Общая идея: мы читаем из file1, выполняем cmd1 с file1 на входе, отправляем вывод в cmd2, который будет писать в
 Outfile.
@@ -12,4 +12,4 @@ Outfile.
 * Для запуска бонусной части необходимо выполнить команду make bonus. В бонусной части мы можем выполнять множество команд.
 Пример для проверки бонусной части: ./pipex_bonus file1 ls "cat -e" "cat -e" "cat -e"outfile.
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-c.svg)](https://forthebadge.com) -->
