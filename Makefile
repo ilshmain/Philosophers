@@ -1,6 +1,6 @@
-NAME		=	pipex
+NAME		=	philo
 
-NAMEB		=	pipex_bonus
+NAMEB		=	philo_bonus
 
 SRCS_FILES	= 	${shell find ./source -name "*.c"}
 
@@ -12,7 +12,7 @@ SRCS_UTILS_FILES	=	$(BONUS_FILES)
 OBJS_UTILS		=	$(patsubst %.c,%.o,$(SRCS_UTILS_FILES))
 
 LIB_DIR		=	libft
-INCLUDE		=	include/pipex.h
+INCLUDE		=	include/philo.h
 
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -Werror
