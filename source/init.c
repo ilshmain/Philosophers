@@ -11,30 +11,21 @@ int	mem_free(t_data *data, int i)
 	i = 0;
 	while (i < data->table->sum_philo)
 	{
-		if (pthread_mutex_destroy(data->table->forks + i))
-			return (-1);
+		pthread_mutex_destroy(data->table->forks + i);
 		i++;
 	}
-	if (pthread_mutex_destroy(&data->table->message))
-		return (-1);
+	pthread_mutex_destroy(&data->table->message);
 	free(data->philo);
 	free(data->table->forks);
 	return (1);
 }
 
-int	allocation(t_data *data)
+int	init_mutex(t_table *table, t_data *d, int i)
 {
-	data->philo = malloc(sizeof(*data->philo) * data->table->sum_philo);
-	if (!data->philo)
+	d->philo = malloc(sizeof(*d->philo) * d->table->sum_philo);
+	d->table->forks = malloc(sizeof(*d->table->forks) * d->table->sum_philo);
+	if (!d->philo || !d->table->forks)
 		return (-1);
-	data->table->forks = malloc(sizeof(*data->table->forks) * data->table->sum_philo);
-	if (!data->table->forks)
-		return (-1);
-	return (1);
-}
-
-int	init_mutex(t_table *table, int i)
-{
 	while (table->sum_philo > i)
 	{
 		if (pthread_mutex_init(table->forks + i, NULL))
@@ -63,9 +54,7 @@ int	init(t_data *data)
 	int	i;
 
 	i = 0;
-	if (allocation(data) < 0)
-		return (ft_error("Error allocation\n"));
-	if (init_mutex(data->table, i) < 0)
+	if (init_mutex(data->table, data, i) < 0)
 		return (ft_error("Error init mutex\n"));
 	init_philosophers(data, i);
 	return (1);

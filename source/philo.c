@@ -29,7 +29,6 @@ int	monitoring(t_data *data, int i)
 				write (1, "THE END\n", 8);
 				return (1);
 			}
-			usleep (500);
 		}
 	}
 	return (0);

@@ -6,7 +6,6 @@ void	ft_init_pars(t_table *table, char **argv, int argc)
 	table->time_die = ft_atoi(argv[2]);
 	table->time_eat = ft_atoi(argv[3]);
 	table->time_sleep = ft_atoi(argv[4]);
-	table->all_ate = 0;
 	if (argc == 6)
 		table->must_eat = ft_atoi(argv[5]);
 	else

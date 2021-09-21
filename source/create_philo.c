@@ -3,11 +3,9 @@
 void	eating(t_data *data, t_philo *ph)
 {
 	pthread_mutex_lock(ph->left_fork);
-	ft_message(data, ph->ph_id, LEFT_FORK);
 	pthread_mutex_lock(ph->right_fork);
+	ft_message(data, ph->ph_id, LEFT_FORK);
 	ft_message(data, ph->ph_id, RIGHT_FORK);
-	if (data->table->must_eat == ph->ate)
-		data->table->all_ate++;
 	if (timestamp() - ph->t_last_meal > data->table->time_die)
 		pthread_mutex_lock(ph->left_fork);
 	ph->t_last_meal = timestamp();
@@ -25,6 +23,7 @@ void	*life(void *v_data)
 
 	data = v_data;
 	ph = data->philo + data->ind_cur;
+	ph->t_last_meal = timestamp();
 	while (1)
 	{
 		eating(data, ph);
@@ -36,16 +35,18 @@ void	*life(void *v_data)
 
 int	creating_philos(t_data *data)
 {
-	int	i;
+	int			i;
+	uint64_t	start;
 
 	i = 0;
+	start = timestamp();
 	while (i < data->table->sum_philo)
 	{
-		data->table->start_time = timestamp();
+		data->table->start_time = start;
 		data->ind_cur = i;
 		if (pthread_create(&data->philo[i].thread_id, NULL, life, data))
 			return (-1);
-		usleep(50);
+		usleep(10);
 		i++;
 	}
 	return (1);

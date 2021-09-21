@@ -30,7 +30,6 @@ typedef struct s_table
 	uint64_t			time_sleep;
 	uint64_t			start_time;
 	int					must_eat;
-	int					all_ate;
 
 }	t_table;
 

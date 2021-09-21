@@ -28,19 +28,6 @@ int	ft_atoi(const char *str)
 	}
 	return (a * nbr);
 }
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while ((*(s1 + i) || *(s2 + i)))
-	{	
-		if (*(s1 + i) != *(s2 + i))
-			return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
-		i++;
-	}
-	return (0);
-}
 
 static void	ft_putchar(char c)
 {
@@ -85,7 +72,6 @@ void	ft_message(t_data *data, int ph_id, char *str)
 		ft_putchar(' ');
 		write(1, str, len);
 		ft_putchar('\n');
-	}
-	if (ft_strcmp(str, DIED))
 		pthread_mutex_unlock(&data->table->message);
+	}
 }
