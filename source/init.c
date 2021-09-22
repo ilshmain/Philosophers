@@ -14,7 +14,6 @@ int	mem_free(t_data *data, int i)
 		pthread_mutex_destroy(data->table->forks + i);
 		i++;
 	}
-	pthread_mutex_destroy(&data->table->message);
 	free(data->philo);
 	free(data->table->forks);
 	return (1);

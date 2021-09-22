@@ -36,13 +36,11 @@ void	*life(void *v_data)
 int	creating_philos(t_data *data)
 {
 	int			i;
-	uint64_t	start;
 
 	i = 0;
-	start = timestamp();
 	while (i < data->table->sum_philo)
 	{
-		data->table->start_time = start;
+		data->table->start_time = timestamp();
 		data->ind_cur = i;
 		if (pthread_create(&data->philo[i].thread_id, NULL, life, data))
 			return (-1);
