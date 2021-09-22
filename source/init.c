@@ -14,6 +14,7 @@ int	mem_free(t_data *data, int i)
 		pthread_mutex_destroy(data->table->forks + i);
 		i++;
 	}
+	pthread_mutex_destroy(&data->table->message);
 	free(data->philo);
 	free(data->table->forks);
 	return (1);
@@ -42,7 +43,8 @@ void	init_philosophers(t_data *d, int i)
 	{
 		d->philo[i].ph_id = i + 1;
 		d->philo[i].left_fork = &d->table->forks[i];
-		d->philo[i].right_fork = &d->table->forks[(i + 1) % d->table->sum_philo];
+		d->philo[i].right_fork = &d->table->forks[(i + 1) \
+			% d->table->sum_philo];
 		d->philo[i].ate = 0;
 		i++;
 	}

@@ -14,7 +14,8 @@ int	monitoring(t_data *data, int i)
 		i = 0;
 		while (i++ < data->table->sum_philo)
 		{
-			if (timestamp() - data->philo[i].t_last_meal > data->table->time_die)
+			if (timestamp() - data->philo[i].t_last_meal > \
+				data->table->time_die)
 			{
 				ft_message(data, data->philo->ph_id, DIED);
 				return (1);
@@ -29,6 +30,7 @@ int	monitoring(t_data *data, int i)
 				write (1, "THE END\n", 8);
 				return (1);
 			}
+			usleep (500);
 		}
 	}
 	return (0);

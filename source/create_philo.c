@@ -35,7 +35,7 @@ void	*life(void *v_data)
 
 int	creating_philos(t_data *data)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	while (i < data->table->sum_philo)
