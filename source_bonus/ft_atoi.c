@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "philo_bonus.h"
 
 int	ft_atoi(const char *str)
 {
@@ -27,4 +27,14 @@ int	ft_atoi(const char *str)
 		k++;
 	}
 	return (a * nbr);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

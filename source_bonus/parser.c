@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
 void	ft_init_pars(t_table *table, char **argv, int argc)
 {

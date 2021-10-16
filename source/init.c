@@ -1,4 +1,4 @@
-#include "../include/philo.h"
+#include "philo.h"
 
 int	mem_free(t_data *data, int i)
 {	

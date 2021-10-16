@@ -1,10 +1,22 @@
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	ft_error(char *str)
+int	ft_strncmp(const char *p1, const char *p2, size_t n)
 {
-	write(1, "Error: ", 7);
-	write(1, str, ft_strlen(str));
-	return (-1);
+	size_t	k;
+
+	k = 0;
+	if (n == 0)
+		return (0);
+	while (k < n - 1)
+	{
+		if (p1[k] == '\0' && p2[k] == '\0')
+			return (0);
+		if ((p1[k] - p2[k]) == 0)
+			k++;
+		else
+			break ;
+	}
+	return ((unsigned char)p1[k] - (unsigned char)p2[k]);
 }
 
 static void	ft_putchar(char c)
@@ -43,13 +55,14 @@ void	ft_message(t_data *data, int ph_id, char *str)
 	tt = timestamp() - data->table->start_time;
 	if (tt >= 0)
 	{
-		pthread_mutex_lock(&data->table->message);
+		sem_wait(data->table->message);
 		ft_putnbr_long(tt);
 		ft_putchar(' ');
-		ft_putnbr_long(ph_id);
+		ft_putnbr_long(ph_id + 1);
 		ft_putchar(' ');
 		write(1, str, len);
 		ft_putchar('\n');
-		pthread_mutex_unlock(&data->table->message);
 	}
+	if (ft_strncmp(str, DIED, 4))
+		sem_post(data->table->message);
 }

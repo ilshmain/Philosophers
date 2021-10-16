@@ -1,11 +1,4 @@
-#include "../include/philo.h"
-
-int	ft_error(char *str)
-{
-	write(1, "Error: ", 7);
-	write(1, str, ft_strlen(str));
-	return (-1);
-}
+#include "philo.h"
 
 int	monitoring(t_data *data, int i)
 {
